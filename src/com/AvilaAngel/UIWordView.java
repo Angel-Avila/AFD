@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -47,13 +48,13 @@ public class UIWordView {
 
         resolverBtn.setOnAction(e -> {
 
-            String word = wordTF.getText();
+            List<String> words = Arrays.asList(wordTF.getText().split(","));
             String currentState = estadoInicial;
 
             // Resolver
 
-            for (int i = 0; i < word.length(); i++)
-                currentState = transiciones.get(word.substring(i, i + 1) + "&" + currentState);
+            for (String word: words)
+                currentState = transiciones.get(word + "&" + currentState);
 
             if(!finales.contains(currentState))
                 resultadoLbl.setText("Rechazada");

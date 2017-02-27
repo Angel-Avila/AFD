@@ -24,6 +24,8 @@ public class UIMainView {
         window = primaryStage;
         window.setTitle("AFD");
 
+        // MARK: - UI config
+
         Label alfabetoLbl = new Label("  Alfabeto (Σ):            ");
         Label estadosLbl  = new Label("  Estados (Q):            ");
         Label finalesLbl  = new Label("  Estados finales (F): ");
@@ -44,6 +46,8 @@ public class UIMainView {
         estadosBox.getChildren().addAll(estadosLbl, estadosTF);
         finalesBox.getChildren().addAll(finalesLbl, finalesTF);
 
+        // MARK: - Button
+
         Button nextBtn = new Button("Siguiente");
         nextBtn.setOnAction(e -> {
 
@@ -55,6 +59,8 @@ public class UIMainView {
 
         });
 
+        // MARK: - Layout
+
         VBox layout = new VBox(22);
 
         layout.getChildren().addAll(alfabetoBox, estadosBox, finalesBox, nextBtn);
@@ -62,6 +68,9 @@ public class UIMainView {
 
         Scene scene = new Scene(layout, 450, 220);
         //scene.getStylesheets().add("style.css");
+
+        // window last config
+
         window.setScene(scene);
         window.setResizable(false);
         window.show();
