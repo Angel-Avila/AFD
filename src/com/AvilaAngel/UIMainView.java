@@ -4,7 +4,6 @@ package com.AvilaAngel;
  * Created by Angel on 2/26/17.
  */
 
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,12 +13,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class UIView {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+public class UIMainView {
 
     public static void display(Stage primaryStage) {
-        System.out.println("hola");
-
         Stage window;
 
         window = primaryStage;
@@ -29,9 +29,9 @@ public class UIView {
         Label estadosLbl  = new Label("  Estados (Q):            ");
         Label finalesLbl  = new Label("  Estados finales (F): ");
 
-        TextField alfabetoTF = new TextField(",,");
-        TextField estadosTF = new TextField(",,");
-        TextField finalesTF = new TextField(",,");
+        TextField alfabetoTF = new TextField("a,b,c,d,e");
+        TextField estadosTF = new TextField("0,1,2,3,4,5,6,7,8,9,10,11,12,13");
+        TextField finalesTF = new TextField("0,1");
 
         alfabetoTF.setPrefWidth(300);
         estadosTF.setPrefWidth(300);
@@ -47,6 +47,12 @@ public class UIView {
 
         Button nextBtn = new Button("Siguiente");
         nextBtn.setOnAction(e -> {
+
+            List<String> alfabeto = Arrays.asList(alfabetoTF.getText().split(","));
+            List<String> estados  = Arrays.asList(estadosTF.getText().split(","));
+            List<String> finales  = Arrays.asList(finalesTF.getText().split(","));
+
+            UIDynamicTableView.display(alfabeto, estados, finales);
 
         });
 
