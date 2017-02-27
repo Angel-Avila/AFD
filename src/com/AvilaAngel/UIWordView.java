@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -16,8 +17,7 @@ import java.util.List;
  */
 public class UIWordView {
 
-    public static void display(List<String> alfabeto,
-                               List<String> estados, List<String> finales, String[][] transiciones) {
+    public static void display(String estadoInicial, List<String> finales, HashMap<String, String> transiciones) {
 
         // MARK: - UI
 
@@ -47,11 +47,15 @@ public class UIWordView {
 
         resolverBtn.setOnAction(e -> {
 
-            boolean estadoFinal = false;
+            String word = wordTF.getText();
+            String currentState = estadoInicial;
 
             // Resolver
 
-            if(!estadoFinal)
+            for (int i = 0; i < word.length(); i++)
+                currentState = transiciones.get(word.substring(i, i + 1) + "&" + currentState);
+
+            if(!finales.contains(currentState))
                 resultadoLbl.setText("Rechazada");
             else
                 resultadoLbl.setText("Aceptada");

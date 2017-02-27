@@ -29,8 +29,8 @@ public class UIMainView {
         Label estadosLbl  = new Label("  Estados (Q):            ");
         Label finalesLbl  = new Label("  Estados finales (F): ");
 
-        TextField alfabetoTF = new TextField("a,b,c,d,e");
-        TextField estadosTF = new TextField("0,1,2,3,4,5,6,7,8,9,10,11,12,13");
+        TextField alfabetoTF = new TextField("a,b");
+        TextField estadosTF = new TextField("0,1,2,3");
         TextField finalesTF = new TextField("0,1");
 
         alfabetoTF.setPrefWidth(300);

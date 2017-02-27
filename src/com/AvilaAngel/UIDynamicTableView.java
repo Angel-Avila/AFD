@@ -12,6 +12,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -97,13 +98,13 @@ public class UIDynamicTableView {
 
         nextBtn.setOnAction(e -> {
 
-            String[][] transiciones = new String[estadosCount][alfabetoCount];
+            HashMap<String, String> transiciones = new HashMap<>();
 
             for (int i = 0; i < estadosCount - 1; i++)
                 for (int j = 0; j < alfabetoCount; j++)
-                    transiciones[i][j] = transicionesTF[i][j].getText();
+                    transiciones.put(alfabeto.get(j) + "&" + estados.get(i) ,transicionesTF[i][j].getText());
 
-            UIWordView.display(alfabeto, estados, finales, transiciones);
+            UIWordView.display(estados.get(0), finales, transiciones);
 
         });
 
