@@ -85,7 +85,7 @@ public class UIDynamicTableView {
 
         sp.setContent(vb);
 
-        // add shit
+        // add stuff
 
         for (int i = 0; i < estadosCount; i++) {
             vb.getChildren().add(transicionesRows[i]);
@@ -96,6 +96,14 @@ public class UIDynamicTableView {
         Button nextBtn = new Button("Siguiente");
 
         nextBtn.setOnAction(e -> {
+
+            String[][] transiciones = new String[estadosCount][alfabetoCount];
+
+            for (int i = 0; i < estadosCount - 1; i++)
+                for (int j = 0; j < alfabetoCount; j++)
+                    transiciones[i][j] = transicionesTF[i][j].getText();
+
+            UIWordView.display(alfabeto, estados, finales, transiciones);
 
         });
 
